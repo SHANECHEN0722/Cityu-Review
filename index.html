@@ -3,46 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>城市大学题库导览</title>
+    <title>CityU Review Hub</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="ambient-light one"></div>
+    <div class="ambient-light two"></div>
+
     <div class="container">
         <header class="header">
-            <h1>🎓 城市大学题库导览</h1>
-            <p class="subtitle">找到你的专业，获取复习资料</p>
+            <div class="header-content">
+                <span class="badge">CityU Resources</span>
+                <h1>Knowledge<br>Navigator</h1>
+                <p class="subtitle">连接你的学院，探索知识的边界。</p>
+            </div>
+            
+            <div class="search-wrapper">
+                <div class="search-glass">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="搜索学院或专业..."
+                    >
+                </div>
+            </div>
         </header>
 
-        <div class="search-section">
-            <input 
-                type="text" 
-                id="searchInput" 
-                class="search-box" 
-                placeholder="搜索学院或专业..."
-            >
-        </div>
+        <main class="content">
+            <div id="schoolsContainer" class="grid-layout schools-grid">
+                </div>
 
-        <div class="content">
-            <!-- 学院卡片容器 -->
-            <div id="schoolsContainer" class="schools-grid">
-                <!-- 由JavaScript动态生成 -->
-            </div>
-
-            <!-- 专业列表（当选择学院时显示） -->
             <div id="majorsContainer" class="majors-section" style="display: none;">
-                <div class="majors-header">
-                    <button class="back-btn" onclick="backToSchools()">← 返回学院列表</button>
+                <div class="section-header">
+                    <button class="nav-btn back-btn" onclick="backToSchools()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        返回
+                    </button>
                     <h2 id="selectedSchoolName"></h2>
                 </div>
-                <div id="majorsList" class="majors-grid">
-                    <!-- 由JavaScript动态生成 -->
-                </div>
+                <div id="majorsList" class="grid-layout majors-grid">
+                    </div>
             </div>
-        </div>
+        </main>
 
         <footer class="footer">
-            <p>💡 提示：点击学院卡片查看该学院的专业列表</p>
-            <p>🔗 每个专业都链接到对应的GitHub仓库，包含完整的复习资料</p>
+            <p>Designed for CityU Students</p>
+            <div class="footer-links">
+                <span>GitHub Resources</span> • <span>Open Source</span>
+            </div>
         </footer>
     </div>
 
