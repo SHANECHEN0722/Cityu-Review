@@ -1,5 +1,5 @@
 // 学校和专业数据结构
-// 修改这个对象来添加你的学院和专业信息
+// type: 'ug' 代表本科 (Undergraduate), 'pg' 代表研究生 (Postgraduate)
 const SCHOOLS_DATA = [
     {
         id: 'engineering',
@@ -7,29 +7,42 @@ const SCHOOLS_DATA = [
         emoji: '🏗️',
         description: '计算机、电子、机械等工程专业',
         majors: [
+            // === 本科生专业 ===
             {
-                name: '计算机科学与技术',
-                description: '学习编程、算法、数据结构等核心课程',
-                githubRepo: 'https://github.com/your-org/cse-review',
+                name: '计算机科学 (BSc)',
+                type: 'ug',
+                description: '本科核心课程：CS101, 数据结构, 算法导论',
+                githubRepo: 'https://github.com/your-org/cs-bachelor',
                 color: '#3498db'
             },
             {
-                name: '软件工程',
-                description: '掌握软件开发流程和最佳实践',
-                githubRepo: 'https://github.com/your-org/software-engineering-review',
-                color: '#2980b9'
-            },
-            {
-                name: '电子信息工程',
-                description: '电路、信号处理、通信技术',
-                githubRepo: 'https://github.com/your-org/electronics-review',
+                name: '电子工程 (BEng)',
+                type: 'ug',
+                description: '电路基础, 信号与系统, 嵌入式开发',
+                githubRepo: 'https://github.com/your-org/ee-bachelor',
                 color: '#27ae60'
             },
             {
-                name: '机械工程',
-                description: '机械设计、制造、自动化',
-                githubRepo: 'https://github.com/your-org/mechanical-engineering-review',
+                name: '机械工程 (BEng)',
+                type: 'ug',
+                description: '工程力学, 机械设计基础',
+                githubRepo: 'https://github.com/your-org/mech-bachelor',
                 color: '#e74c3c'
+            },
+            // === 研究生专业 ===
+            {
+                name: '计算机科学 (MSc)',
+                type: 'pg',
+                description: '高级算法, 分布式系统, 深度学习',
+                githubRepo: 'https://github.com/your-org/cs-master',
+                color: '#2980b9'
+            },
+            {
+                name: '电子资讯工程 (MSc)',
+                type: 'pg',
+                description: '高频电路, 现代通信网络设计',
+                githubRepo: 'https://github.com/your-org/eie-master',
+                color: '#16a085'
             }
         ]
     },
@@ -40,47 +53,24 @@ const SCHOOLS_DATA = [
         description: '数学、物理、化学等基础科学',
         majors: [
             {
-                name: '数学与应用数学',
-                description: '高等数学、线性代数、概率统计',
-                githubRepo: 'https://github.com/your-org/mathematics-review',
+                name: '应用数学 (BSc)',
+                type: 'ug',
+                description: '微积分, 线性代数, 概率统计',
+                githubRepo: 'https://github.com/your-org/math-ug',
                 color: '#9b59b6'
             },
             {
-                name: '物理学',
-                description: '理论物理、实验物理',
-                githubRepo: 'https://github.com/your-org/physics-review',
+                name: '应用物理 (BSc)',
+                type: 'ug',
+                description: '量子力学导论, 光学',
+                githubRepo: 'https://github.com/your-org/phy-ug',
                 color: '#e67e22'
             },
             {
-                name: '化学',
-                description: '有机化学、无机化学、分析化学',
-                githubRepo: 'https://github.com/your-org/chemistry-review',
-                color: '#1abc9c'
-            }
-        ]
-    },
-    {
-        id: 'liberal-arts',
-        name: '文学院',
-        emoji: '📚',
-        description: '中文、英文、历史等人文学科',
-        majors: [
-            {
-                name: '中文学',
-                description: '中国古典文学、现代文学',
-                githubRepo: 'https://github.com/your-org/chinese-literature-review',
-                color: '#c0392b'
-            },
-            {
-                name: '英文学',
-                description: '英美文学、语言学、翻译',
-                githubRepo: 'https://github.com/your-org/english-literature-review',
-                color: '#2980b9'
-            },
-            {
-                name: '历史学',
-                description: '中国史、世界史、史学理论',
-                githubRepo: 'https://github.com/your-org/history-review',
+                name: '数据科学 (MSc)',
+                type: 'pg',
+                description: '大数据分析, 统计学习方法',
+                githubRepo: 'https://github.com/your-org/ds-pg',
                 color: '#8e44ad'
             }
         ]
@@ -92,28 +82,32 @@ const SCHOOLS_DATA = [
         description: '会计、金融、管理等商科专业',
         majors: [
             {
-                name: '会计学',
-                description: '财务会计、管理会计、审计',
-                githubRepo: 'https://github.com/your-org/accounting-review',
-                color: '#16a085'
-            },
-            {
-                name: '金融学',
-                description: '投资学、金融市场、风险管理',
-                githubRepo: 'https://github.com/your-org/finance-review',
-                color: '#27ae60'
-            },
-            {
-                name: '工商管理',
-                description: '企业管理、市场营销、战略管理',
-                githubRepo: 'https://github.com/your-org/business-administration-review',
+                name: '工商管理 (BBA)',
+                type: 'ug',
+                description: '市场营销, 组织行为学',
+                githubRepo: 'https://github.com/your-org/bba-ug',
                 color: '#f39c12'
             },
             {
-                name: '经济学',
-                description: '微观经济学、宏观经济学、计量经济学',
-                githubRepo: 'https://github.com/your-org/economics-review',
-                color: '#e74c3c'
+                name: '金融学 (BBA)',
+                type: 'ug',
+                description: '公司金融, 投资学基础',
+                githubRepo: 'https://github.com/your-org/fin-ug',
+                color: '#27ae60'
+            },
+            {
+                name: 'MBA',
+                type: 'pg',
+                description: '高级管理实务, 战略决策',
+                githubRepo: 'https://github.com/your-org/mba',
+                color: '#d35400'
+            },
+            {
+                name: '金融工程 (MSc)',
+                type: 'pg',
+                description: '衍生品定价, 风险管理模型',
+                githubRepo: 'https://github.com/your-org/fe-pg',
+                color: '#c0392b'
             }
         ]
     },
@@ -124,42 +118,24 @@ const SCHOOLS_DATA = [
         description: '法律学科，培养法律人才',
         majors: [
             {
-                name: '法学',
-                description: '民法、刑法、商法、国际法',
-                githubRepo: 'https://github.com/your-org/law-review',
+                name: '法学 (LLB)',
+                type: 'ug',
+                description: '宪法, 刑法, 合同法',
+                githubRepo: 'https://github.com/your-org/llb',
                 color: '#2c3e50'
             },
             {
-                name: '知识产权法',
-                description: '专利法、著作权、商标法',
-                githubRepo: 'https://github.com/your-org/intellectual-property-review',
+                name: '法学硕士 (LLM)',
+                type: 'pg',
+                description: '国际商法, 仲裁法, 知识产权进阶',
+                githubRepo: 'https://github.com/your-org/llm',
                 color: '#34495e'
-            }
-        ]
-    },
-    {
-        id: 'medicine',
-        name: '医学院',
-        emoji: '⚕️',
-        description: '医学、护理等医疗相关专业',
-        majors: [
-            {
-                name: '医学',
-                description: '临床医学、基础医学、医学化学',
-                githubRepo: 'https://github.com/your-org/medicine-review',
-                color: '#c0392b'
-            },
-            {
-                name: '护理学',
-                description: '护理学基础、临床护理',
-                githubRepo: 'https://github.com/your-org/nursing-review',
-                color: '#e74c3c'
             }
         ]
     }
 ];
 
-// 导出数据供script.js使用
+// 导出数据供 script.js 使用
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = SCHOOLS_DATA;
 }

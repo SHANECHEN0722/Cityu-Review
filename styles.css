@@ -68,8 +68,9 @@ body {
 /* ===== 头部 ===== */
 .header {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     position: relative;
+    opacity: 0; /* JS控制入场动画 */
 }
 
 .badge {
@@ -103,9 +104,65 @@ body {
     font-weight: 400;
 }
 
+/* ===== 身份切换开关 (Segmented Control) ===== */
+.degree-selector {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.segment-control {
+    position: relative;
+    display: flex;
+    background: rgba(118, 118, 128, 0.24);
+    backdrop-filter: blur(10px);
+    border-radius: 99px;
+    padding: 4px;
+    width: 300px;
+}
+
+.segment-control input[type="radio"] {
+    display: none;
+}
+
+.segment-control label {
+    flex: 1;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    z-index: 2;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.segment-control input:checked + label {
+    color: #fff;
+}
+
+/* 滑块指示器 */
+.segment-indicator {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background: rgba(99, 99, 102, 1);
+    border-radius: 99px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s var(--transition-curve);
+    z-index: 1;
+}
+
+/* 切换逻辑: 选中第二个radio时移动滑块 */
+#pg:checked ~ .segment-indicator {
+    transform: translateX(100%);
+}
+
 /* ===== 搜索框 ===== */
 .search-wrapper {
-    margin-top: 40px;
     display: flex;
     justify-content: center;
 }
@@ -169,6 +226,7 @@ body {
     overflow: hidden;
     text-decoration: none;
     display: block;
+    opacity: 0; /* 默认隐藏，等待JS动画 */
 }
 
 .school-card:hover, .major-card:hover {
@@ -301,4 +359,15 @@ body {
     .grid-layout {
         grid-template-columns: 1fr;
     }
+    
+    .segment-control {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* 动画定义 */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
