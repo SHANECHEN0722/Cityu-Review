@@ -1,0 +1,22 @@
+{
+  "name": "cityu-question-bank-portal",
+  "version": "1.0.0",
+  "description": "城市大学题库导览网站",
+  "main": "index.html",
+  "scripts": {
+    "serve": "python -m http.server 8000",
+    "serve:node": "npx http-server"
+  },
+  "keywords": [
+    "question-bank",
+    "school-portal",
+    "study-materials",
+    "github-links"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}

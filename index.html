@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>城市大学题库导览</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎓 城市大学题库导览</h1>
+            <p class="subtitle">找到你的专业，获取复习资料</p>
+        </header>
+
+        <div class="search-section">
+            <input 
+                type="text" 
+                id="searchInput" 
+                class="search-box" 
+                placeholder="搜索学院或专业..."
+            >
+        </div>
+
+        <div class="content">
+            <!-- 学院卡片容器 -->
+            <div id="schoolsContainer" class="schools-grid">
+                <!-- 由JavaScript动态生成 -->
+            </div>
+
+            <!-- 专业列表（当选择学院时显示） -->
+            <div id="majorsContainer" class="majors-section" style="display: none;">
+                <div class="majors-header">
+                    <button class="back-btn" onclick="backToSchools()">← 返回学院列表</button>
+                    <h2 id="selectedSchoolName"></h2>
+                </div>
+                <div id="majorsList" class="majors-grid">
+                    <!-- 由JavaScript动态生成 -->
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>💡 提示：点击学院卡片查看该学院的专业列表</p>
+            <p>🔗 每个专业都链接到对应的GitHub仓库，包含完整的复习资料</p>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
