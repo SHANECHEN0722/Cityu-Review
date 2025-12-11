@@ -165,6 +165,6 @@ Cityu-Review/
 
 **⭐ 如果这个项目对你有帮助，请给我一个Star！**
 
-Made with ❤️ by Xian Chen
+❤️ Xian Chen
 
 </div>
