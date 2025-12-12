@@ -67,8 +67,10 @@ function renderSchools(schools) {
 
     if (schools.length === 0) {
         container.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); padding: 40px;">
-                <p>No results found.</p>
+            <div style="grid-column: 1/-1; text-align: center; padding: 60px 40px;">
+                <div style="font-size: 3rem; margin-bottom: 20px; opacity: 0.6;">🔍</div>
+                <p style="font-size: 1.6rem; font-weight: 600; color: var(--text-primary); margin-bottom: 12px;">No results found.</p>
+                <p style="font-size: 1rem; color: var(--text-secondary); margin: 0;">Try adjusting your search keywords or check the program name spelling</p>
             </div>
         `;
         return;
