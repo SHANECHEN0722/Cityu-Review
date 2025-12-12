@@ -123,6 +123,11 @@ body {
     display: inline-block;
 }
 
+.subtitle {
+    font-size: 1.5rem; /* 调整字体大小 */
+    line-height: 1.6; /* 增加行高 */
+}
+
 @media (max-width: 768px) {
     .cityu-title {
         font-size: 2.5rem; /* 更小的标题字体 */
