@@ -120,29 +120,15 @@ Cityu-Review/
 
 我们欢迎所有形式的贡献！请查看 [贡献指南](#-如何贡献你的专业复习资料) 了解详情。
 
-### 贡献者
-
-感谢所有为这个项目做出贡献的同学们！
+## Contributors
 
 <a href="https://github.com/SHANECHEN0722/Cityu-Review/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=SHANECHEN0722/Cityu-Review" />
 </a>
 
-**项目创建者:**
+## Maintainers
 
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/SHANECHEN0722">
-        <img src="https://github.com/SHANECHEN0722.png" width="100px;" alt="Shane Chen"/>
-        <br />
-        <sub><b>Shane Chen</b></sub>
-      </a>
-      <br />
-      <sub>项目创建者 & 维护者</sub>
-    </td>
-  </tr>
-</table>
+[Shane Chen](https://github.com/SHANECHEN0722)
 
 ## 📄 开源协议
 
