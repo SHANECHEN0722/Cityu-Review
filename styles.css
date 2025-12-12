@@ -117,7 +117,7 @@ body {
 
 .cityu-title .highlight {
     background: linear-gradient(120deg, #ffffff 30%, #999 100%);
-    -webkit-background-clip: text;
+    -webkit-background-clip: text; /* WebKit 专有属性，用于裁剪背景以适应文本内容 */
     background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -467,4 +467,19 @@ body {
     .segment-control { width: 100%; }
     .container { padding: 40px 20px; }
     .header h1 { font-size: 3rem; }
+}
+
+/* Safari 兼容性优化 */
+@supports (-webkit-backdrop-filter: blur(0)) {
+    .card-base {
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+    }
+}
+
+@supports (-webkit-text-fill-color: transparent) {
+    .highlight {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 }
