@@ -1,36 +1,52 @@
 // 全局变量
 let currentSchoolId = null;
-let currentDegree = 'ug'; // 默认本科生 'ug' 或研究生 'pg'
-let filteredSchools = []; // 用于存储当前过滤后的数据
+let currentDegree = 'ug'; 
+let filteredSchools = [];
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 监听切换开关
-    setupDegreeToggle();
-    
-    // 初始化数据
-    filteredSchools = [...SCHOOLS_DATA];
-    
-    // 初始渲染（触发第一次过滤）
+    // 1. 初始化数据
+    if (typeof window.SCHOOLS_DATA !== 'undefined') {
+        filteredSchools = [...window.SCHOOLS_DATA];
+    } else {
+        // 如果数据还没加载，等待一下
+        console.warn("Data loading...");
+        if(window.SCHOOLS_DATA) filteredSchools = [...window.SCHOOLS_DATA];
+    }
+
+    // 2. 初始渲染
     handleSearch({ target: { value: '' } });
+
+    // 3. 监听器
+    setupDegreeToggle();
     setupEventListeners();
-    
-    // 头部入场动画
-    const header = document.querySelector('.header');
-    header.style.transition = 'all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
-    header.style.opacity = '1';
-    header.style.transform = 'translateY(0)';
-    
-    // 注入必要的动画样式（防止 CSS 文件加载延迟）
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .header { transform: translateY(20px); opacity: 0; }
-    `;
-    document.head.prepend(style);
+    setupSpotlightEffect();
 });
+
+// Spotlight 核心逻辑
+function setupSpotlightEffect() {
+    const container = document.querySelector('main');
+    container.addEventListener('mousemove', (e) => {
+        const cards = document.querySelectorAll('.card-base');
+        for (const card of cards) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+        }
+    });
+}
 
 function setupEventListeners() {
     const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', handleSearch);
+    if (searchInput) {
+        searchInput.addEventListener('input', handleSearch);
+    }
+    
+    const backBtn = document.getElementById('backBtn');
+    if (backBtn) {
+        backBtn.addEventListener('click', backToSchools);
+    }
 }
 
 function setupDegreeToggle() {
@@ -38,7 +54,6 @@ function setupDegreeToggle() {
     radios.forEach(radio => {
         radio.addEventListener('change', (e) => {
             currentDegree = e.target.value;
-            // 切换时重新筛选和渲染，保留当前的搜索词
             const currentSearchTerm = document.getElementById('searchInput').value;
             handleSearch({ target: { value: currentSearchTerm } });
         });
@@ -47,37 +62,33 @@ function setupDegreeToggle() {
 
 function renderSchools(schools) {
     const container = document.getElementById('schoolsContainer');
+    if (!container) return;
     container.innerHTML = '';
-    
-    // 容器渐入动画
-    container.style.opacity = '0';
-    setTimeout(() => {
-        container.style.transition = 'opacity 0.5s ease';
-        container.style.opacity = '1';
-    }, 10);
 
     if (schools.length === 0) {
         container.innerHTML = `
             <div style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); padding: 40px;">
-                <span style="font-size: 3rem; display: block; margin-bottom: 20px;">🔍</span>
-                <h3>无相关结果</h3>
-                <p>该类别下暂无匹配的学院或专业</p>
+                <p>No results found.</p>
             </div>
         `;
         return;
     }
 
-    schools.forEach((school, index) => {
+    schools.forEach(school => {
         const card = document.createElement('div');
-        card.className = 'school-card';
-        // 添加交错动画延迟
-        card.style.animation = `fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards ${index * 0.05}s`;
-        
+        card.className = 'card-base school-card';
+        card.style.opacity = '1';
+
         card.innerHTML = `
-            <span class="emoji">${school.emoji}</span>
+            <div class="school-icon-wrapper">
+                ${school.icon}
+            </div>
             <h3>${school.name}</h3>
             <p>${school.description}</p>
-            <div class="major-count">${school.majors.length} 个专业</div>
+            <div class="card-footer">
+                <span class="tag">${school.majors.length} Majors</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
         `;
         card.addEventListener('click', () => selectSchool(school.id));
         container.appendChild(card);
@@ -86,51 +97,51 @@ function renderSchools(schools) {
 
 function selectSchool(schoolId) {
     currentSchoolId = schoolId;
-    // 注意：这里要从 filteredSchools 找，因为 filteredSchools 已经根据 degree 过滤过了
     const school = filteredSchools.find(s => s.id === schoolId);
-    
     if (!school) return;
 
-    // 切换视图动画
-    const schoolsContainer = document.getElementById('schoolsContainer');
-    const majorsContainer = document.getElementById('majorsContainer');
+    document.getElementById('schoolsContainer').style.display = 'none';
+    document.getElementById('majorsContainer').style.display = 'block';
     
-    schoolsContainer.style.display = 'none';
-    majorsContainer.style.display = 'block';
-    
-    // 渲染内容
     document.getElementById('selectedSchoolName').textContent = school.name;
     renderMajors(school.majors);
     
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// 核心修改：渲染专业卡片时，去除杂色，统一风格
 function renderMajors(majors) {
     const container = document.getElementById('majorsList');
+    if (!container) return;
     container.innerHTML = '';
 
-    if (majors.length === 0) {
-        container.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">
-                <p>该学院下暂无此类课程资料</p>
-            </div>
-        `;
-        return;
-    }
-
-    majors.forEach((major, index) => {
+    majors.forEach((major) => {
         const card = document.createElement('a');
         card.href = major.githubRepo;
         card.target = '_blank';
-        card.className = 'major-card';
-        // 交错动画
-        card.style.animation = `fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards ${index * 0.05}s`;
+        // 复用 card-base 保持玻璃质感
+        card.className = 'card-base major-card';
+        card.style.opacity = '1';
         
+        // 关键：不再使用 major.color，而是使用统一的 .major-tag 样式
+        // 并在右上角添加了一个 Book 图标，让视觉重心更稳
         card.innerHTML = `
-            <h4>${major.name}</h4>
-            <p>${major.description}</p>
-            <div class="link-indicator">
-                View Repository <span>→</span>
+            <div class="card-content">
+                <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:12px;">
+                    <span class="major-tag">
+                        ${currentDegree.toUpperCase()}
+                    </span>
+                    <div style="color:var(--text-secondary); opacity:0.5;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    </div>
+                </div>
+                
+                <h4>${major.name}</h4>
+                <p>${major.description}</p>
+                
+                <div class="card-footer">
+                    <span style="font-size:14px; color:#0A84FF; font-weight:500;">View Resources →</span>
+                </div>
             </div>
         `;
         container.appendChild(card);
@@ -141,52 +152,36 @@ function backToSchools() {
     currentSchoolId = null;
     document.getElementById('majorsContainer').style.display = 'none';
     document.getElementById('schoolsContainer').style.display = 'grid';
-    
-    // 重新渲染以触发动画
     renderSchools(filteredSchools);
 }
 
 function handleSearch(event) {
     const searchTerm = event.target ? event.target.value.toLowerCase().trim() : '';
+    const dataSource = window.SCHOOLS_DATA || [];
     
-    // 第一步：基于 Degree (ug/pg) 过滤数据
-    // 我们遍历所有学院，只保留符合当前 degree 的专业
-    let processedData = SCHOOLS_DATA.map(school => {
+    let processedData = dataSource.map(school => {
         const validMajors = school.majors.filter(major => major.type === currentDegree);
-        return {
-            ...school,
-            majors: validMajors
-        };
-    }).filter(school => school.majors.length > 0); // 如果某学院在当前学位下没专业，就不显示该学院
+        return { ...school, majors: validMajors };
+    }).filter(school => school.majors.length > 0);
 
-    // 第二步：基于搜索词过滤
     if (searchTerm) {
         processedData = processedData.filter(school => {
             const schoolMatch = school.name.toLowerCase().includes(searchTerm) ||
                                school.description.toLowerCase().includes(searchTerm);
-            
             const majorsMatch = school.majors.some(major =>
                 major.name.toLowerCase().includes(searchTerm) ||
                 major.description.toLowerCase().includes(searchTerm)
             );
-
             return schoolMatch || majorsMatch;
         });
     }
 
-    // 更新全局过滤数据
     filteredSchools = processedData;
     
-    // 渲染
-    // 如果当前正在查看某个学院详情，需要实时刷新详情页
     if (currentSchoolId && document.getElementById('majorsContainer').style.display !== 'none') {
         const currentSchool = processedData.find(s => s.id === currentSchoolId);
-        if (currentSchool) {
-            renderMajors(currentSchool.majors);
-        } else {
-            // 如果切换后该学院没有对应专业的课程（或者被搜索过滤掉了），返回列表
-            backToSchools();
-        }
+        if (currentSchool) renderMajors(currentSchool.majors);
+        else backToSchools();
     } else {
         renderSchools(filteredSchools);
     }
