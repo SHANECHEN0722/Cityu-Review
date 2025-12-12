@@ -190,6 +190,8 @@ body {
     margin-top: 40px;
     display: flex;
     justify-content: center;
+    gap: 16px;
+    align-items: center;
 }
 
 .search-input-group {
@@ -223,6 +225,34 @@ body {
     transform: translateY(-50%);
     color: var(--text-secondary);
     pointer-events: none;
+}
+
+/* 贡献资源按钮 */
+.contribute-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--cityu-burgundy) 0%, #a0002e 100%);
+    color: #fff;
+    border: 1px solid rgba(133, 0, 41, 0.3);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(133, 0, 41, 0.2);
+    white-space: nowrap;
+}
+
+.contribute-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(133, 0, 41, 0.35);
+}
+
+.contribute-btn svg {
+    width: 16px;
+    height: 16px;
 }
 
 /* 网格布局 */
