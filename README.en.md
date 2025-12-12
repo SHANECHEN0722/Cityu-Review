@@ -4,6 +4,8 @@
 
 **Study Resource Navigation Platform for City University of Hong Kong**
 
+[中文](README.md) · [English](README.en.md)
+
 [![GitHub stars](https://img.shields.io/github/stars/SHANECHEN0722/Cityu-Review?style=flat-square)](https://github.com/SHANECHEN0722/Cityu-Review/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/SHANECHEN0722/Cityu-Review?style=flat-square)](https://github.com/SHANECHEN0722/Cityu-Review/network)
 [![GitHub issues](https://img.shields.io/github/issues/SHANECHEN0722/Cityu-Review?style=flat-square)](https://github.com/SHANECHEN0722/Cityu-Review/issues)
