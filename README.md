@@ -6,7 +6,8 @@
     <a href="https://github.com/SHANECHEN0722/Cityu-Review/network/members"><img src="https://img.shields.io/github/forks/SHANECHEN0722/Cityu-Review.svg?style=for-the-badge" alt="Forks"></a>
     <a href="https://github.com/SHANECHEN0722/Cityu-Review/graphs/contributors"><img src="https://img.shields.io/github/contributors/SHANECHEN0722/Cityu-Review.svg?style=for-the-badge" alt="Contributors"></a>
     <a href="https://github.com/SHANECHEN0722/Cityu-Review/issues"><img src="https://img.shields.io/github/issues/SHANECHEN0722/Cityu-Review.svg?style=for-the-badge" alt="Issues"></a>
-    <a href="https://github.com/SHANECHEN0722/Cityu-Review/blob/main/LICENSE"><img src="https://img.shields.io/github/license/SHANECHEN0722/Cityu-Review.svg?style=for-the-badge" alt="MIT License"></a>
+    <a href="https://github.com/SHANECHEN0722/Cityu-Review/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License"></a>
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh"><img src="https://img.shields.io/badge/License-CC_BY_4.0-lightblue.svg?style=for-the-badge&label=license" alt="CC BY-SA 4.0"></a>
     <a href="https://shanechen0722.github.io/Cityu-Review/"><img src="https://img.shields.io/badge/GitHub%20Pages-181717?style=for-the-badge&logo=github" alt="GitHub Pages"></a>
     <a href="mailto:dieael_chenxian@163.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>
 </p>
@@ -256,13 +257,12 @@ Cityu-Review/
 
 ## 🙏 致谢
 
-- 本项目参考了 [CityU 手册](https://github.com/penjc/CityU) 的内容，感谢其开源贡献。
 - 感谢香港城市大学提供的教育资源
 - 感谢所有贡献学习资料的同学们
 
 <p align="right"><a href="#readme-top">回到顶部</a></p>
 
-## 📞 联系我们
+## 📞 联系我
 
 如果您在使用中遇到问题，或者有任何反馈，欢迎通过以下方式与我们取得联系：
 
