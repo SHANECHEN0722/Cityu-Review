@@ -16,8 +16,8 @@ window.SCHOOLS_DATA = [
             { name: 'BSc Data Science', type: 'ug', description: '数据科学理学士', githubRepo: 'contribution.html', color: '#5E5CE6' },
             { name: 'BSc Data and Systems Engineering', type: 'ug', description: '数据与系统工程理学士', githubRepo: 'contribution.html', color: '#5E5CE6' },
             { name: 'MSc Biostatistics', type: 'pg', description: '理學碩士(生物統計學)', githubRepo: 'contribution.html', color: '#30B0C7' },
-            { name: 'MSc Artificial Intelligence', type: 'pg', description: '理學碩士(人工智能)', githubRepo: 'https://shanechen0722.github.io/cityu-CS-review/', color: '#0A84FF' },
-            { name: 'MSc Computer Science', type: 'pg', description: '理學碩士(計算機科學)', githubRepo: 'contribution.html', color: '#0A84FF' },
+            { name: 'MSc Artificial Intelligence', type: 'pg', description: '理學碩士(人工智能)', githubRepo: 'contribution.html', color: '#0A84FF' },
+            { name: 'MSc Computer Science', type: 'pg', description: '理學碩士(計算機科學)', githubRepo: 'chttps://shanechen0722.github.io/cityu-CS-review/', color: '#0A84FF' },
             { name: 'MSc Electronic Commerce', type: 'pg', description: '理學碩士(電子商貿)', githubRepo: 'contribution.html', color: '#BF5AF2' },
             { name: 'MSc Data Science', type: 'pg', description: '理學碩士(數據科學)', githubRepo: 'contribution.html', color: '#5E5CE6' }
         ]
