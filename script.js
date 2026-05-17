@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupDegreeToggle();
     setupEventListeners();
     setupSpotlightEffect();
+    setupLetterToggle();
 });
 
 // Spotlight 核心逻辑
@@ -47,6 +48,36 @@ function setupEventListeners() {
     if (backBtn) {
         backBtn.addEventListener('click', backToSchools);
     }
+}
+
+function setupLetterToggle() {
+    const toggle = document.getElementById('letterToggle');
+    const overlay = document.getElementById('letterOverlay');
+    const closeBtn = document.getElementById('letterClose');
+    if (!toggle || !overlay) return;
+
+    const setLetterOpen = (isOpen) => {
+        document.body.classList.toggle('letter-open', isOpen);
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        overlay.setAttribute('aria-hidden', String(!isOpen));
+    };
+
+    setLetterOpen(false);
+
+    toggle.addEventListener('click', () => {
+        const isOpen = !document.body.classList.contains('letter-open');
+        setLetterOpen(isOpen);
+    });
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => setLetterOpen(false));
+    }
+
+    overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) {
+            setLetterOpen(false);
+        }
+    });
 }
 
 function setupDegreeToggle() {

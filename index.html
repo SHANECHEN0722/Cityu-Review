@@ -60,8 +60,34 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
                     Contribute Resources
                 </a>
+
+                  <section class="letter-section" aria-label="Letter to visitors">
+                <button class="letter-toggle" id="letterToggle" type="button" aria-expanded="false" aria-controls="letterOverlay">
+                    <span class="letter-toggle-text">A Letter to Visitors</span>
+                    <span class="letter-toggle-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </span>
+                </button>
+            </section>
+            
             </div>
+
+          
         </header>
+
+        <div class="letter-overlay" id="letterOverlay" aria-hidden="true">
+            <div class="letter-panel" role="dialog" aria-label="Handwritten letter">
+                <button class="letter-close" id="letterClose" type="button" aria-label="Close letter">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18"/>
+                        <path d="M6 6l12 12"/>
+                    </svg>
+                </button>
+                <img class="letter-image" src="p/BDF7E3CA-8D41-4A6C-8F7B-852276E9A0B8.PNG" alt="Handwritten letter to visitors">
+            </div>
+        </div>
 
         <main>
             <div id="schoolsContainer" class="grid-layout"></div>
