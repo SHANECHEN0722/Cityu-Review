@@ -22,6 +22,8 @@
     一个专为香港城市大学学生设计的学习资源导航网站，帮助学生快速找到各专业的复习资料。
     <br />
     <br />
+      <a href="https://v.douyin.com/ZopvEx3pjJg/">🍲 视频讲解</a>
+    &middot;
     <a href="https://shanechen0722.github.io/Cityu-Review/"><strong>🌐 在线访问 »</strong></a>
     <br />
     <br />
