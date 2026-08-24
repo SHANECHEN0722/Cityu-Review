@@ -25,6 +25,7 @@
       <a href="https://v.douyin.com/ZopvEx3pjJg/">🍲 视频讲解</a>
     &middot;
     <a href="https://shanechen0722.github.io/Cityu-Review/"><strong>🌐 在线访问 »</strong></a>
+       <a href="https://github.com/SHANECHEN0722/cityu-CS-review"><strong>😊 实际案例仓库</strong></a>
     <br />
     <br />
     <a href="#-如何贡献你的专业复习资料">📝 贡献指南</a>
